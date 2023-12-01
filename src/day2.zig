@@ -68,17 +68,15 @@ pub fn main() !void {
             score += 6;
         }
 
-        const result2 = result_types.get(elve).?;
-
         switch (column_2) {
             'X' => {
-                score2 += value(result2.losing);
+                score2 += value(result.losing);
             },
             'Y' => {
-                score2 += value(result2.equals) + 3;
+                score2 += value(result.equals) + 3;
             },
             'Z' => {
-                score2 += value(result2.winning) + 6;
+                score2 += value(result.winning) + 6;
             },
             else => unreachable,
         }
