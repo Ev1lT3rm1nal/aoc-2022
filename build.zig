@@ -37,7 +37,7 @@ pub fn build(b: *std.Build) !void {
     if (day) |selected| {
         try list_exe.append(dayToExe(b, selected, target, optimize));
     } else {
-        for (0..26) |day_i| {
+        for (1..26) |day_i| {
             try list_exe.append(dayToExe(b, day_i, target, optimize));
         }
     }
@@ -46,7 +46,6 @@ pub fn build(b: *std.Build) !void {
         b.installArtifact(exe);
         const run_cmd = b.addRunArtifact(exe);
         try list_run.append(run_cmd);
-        run_cmd.step.dependOn(b.getInstallStep());
     }
 
     const run_step = b.step("run", "Run apps");
